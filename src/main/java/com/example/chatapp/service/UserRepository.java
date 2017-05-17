@@ -1,7 +1,9 @@
 package com.example.chatapp.service;
 
-import com.example.chatapp.model.User;
+import com.example.chatapp.model.Username;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Component;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+@Component
+public interface UserRepository extends CrudRepository<Username, Long> {
 }

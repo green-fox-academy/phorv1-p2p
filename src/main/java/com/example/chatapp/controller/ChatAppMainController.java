@@ -1,7 +1,7 @@
 package com.example.chatapp.controller;
 
 import com.example.chatapp.model.Logging;
-import com.example.chatapp.model.User;
+import com.example.chatapp.model.Username;
 import com.example.chatapp.service.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,7 +49,7 @@ public class ChatAppMainController {
 
   @PostMapping(value = "/enter")
   public String addNewUser(String username) {
-    repository.save(new User(username));
+    repository.save(new Username(username));
     return "redirect:/";
   }
 }
