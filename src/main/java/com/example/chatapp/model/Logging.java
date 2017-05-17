@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
-@Component
 @Getter
 @Setter
 public class Logging {
@@ -17,10 +16,10 @@ public class Logging {
   String method;
   String requestData;
 
-  public Logging(String path, String method,
+  public Logging(String logLevel, String path, String method,
           String requestData) {
     this.dateAndTime = LocalDateTime.now();
-    this.logLevel = "INFO";
+    this.logLevel = logLevel;
     this.path = path;
     this.method = method;
     this.requestData = requestData;
