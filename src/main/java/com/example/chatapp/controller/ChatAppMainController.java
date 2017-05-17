@@ -1,20 +1,33 @@
 package com.example.chatapp.controller;
 
 import com.example.chatapp.model.Logging;
-import org.springframework.boot.context.config.ResourceNotFoundException;
-import org.springframework.http.HttpStatus;
+import com.example.chatapp.model.User;
+import com.example.chatapp.service.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 @Controller
 public class ChatAppMainController {
 
+  @Autowired
+  UserRepository repository;
+
+  String chatAppUniqueId;
+  String chatAppPeerAddress;
+
+  public ChatAppMainController() {
+    this.chatAppUniqueId = System.getenv("CHAT_APP_UNIQUE_ID");
+    this.chatAppPeerAddress = System.getenv("CHAT_APP_PEER_ADDRESSS");
+  }
+
   @ExceptionHandler(value = NoHandlerFoundException.class)
   public String notFound() {
-    System.out.println("ERROR");
+    System.err.println("ERROR");
     return "redirect:/";
   }
 
@@ -27,5 +40,16 @@ public class ChatAppMainController {
       System.out.println(new Logging("INFO","/", "GET", ""));
     }
     return "index";
+  }
+
+  @GetMapping(value = "/enter")
+  public String registerPage(){
+    return "register";
+  }
+
+  @PostMapping(value = "/enter")
+  public String addNewUser(String username) {
+    repository.save(new User(username));
+    return "redirect:/";
   }
 }
