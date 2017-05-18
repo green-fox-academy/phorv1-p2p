@@ -12,8 +12,10 @@ import org.springframework.stereotype.Component;
 public class ChatAppMessages {
 
   @Id
+  @Getter
   long id;
 
+  @Getter
   @Setter
   Timestamp timestamp;
 
