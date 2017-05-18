@@ -75,8 +75,8 @@ public class ChatAppMainController {
   public String addMessage(String messages) {
     chatAppMessages.setId();
     chatAppMessages.setUsername(nameOfUser.getUsername());
-    chatAppMessages.setNewMessage(messages);
-    chatAppMessages.setTimeStamp(new Timestamp(System.currentTimeMillis()));
+    chatAppMessages.setText(messages);
+    chatAppMessages.setTimestamp(new Timestamp(System.currentTimeMillis()));
     messagesRepository.save(chatAppMessages);
     return "redirect:/";
   }
