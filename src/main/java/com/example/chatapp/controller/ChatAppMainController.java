@@ -59,6 +59,7 @@ public class ChatAppMainController {
       return "register-error";
     }
     nameOfUser.setUsername(userentry);
+    nameOfUser.setId(1l);
     repository.save(nameOfUser);
     return "redirect:/";
   }
