@@ -3,6 +3,7 @@ package com.example.chatapp.controller;
 import com.example.chatapp.model.ChatAppMessages;
 import com.example.chatapp.model.Logging;
 import com.example.chatapp.model.NameOfUser;
+import com.example.chatapp.service.MessagesRepository;
 import com.example.chatapp.service.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ public class ChatAppMainController {
   NameOfUser nameOfUser;
   @Autowired
   ChatAppMessages chatAppMessages;
+  @Autowired
+  MessagesRepository messagesRepository;
 
   String chatAppUniqueId;
   String chatAppPeerAddress;
@@ -68,7 +71,10 @@ public class ChatAppMainController {
 
   @PostMapping(value = "/send")
   public String addMessage(String messages) {
-
+    chatAppMessages.setId();
+    chatAppMessages.setUsername(nameOfUser.getUsername());
+    chatAppMessages.setNewMessage(messages);
+    messagesRepository.save(chatAppMessages);
     return "redirect:/";
   }
 }
