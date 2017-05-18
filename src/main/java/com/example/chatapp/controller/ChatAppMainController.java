@@ -5,6 +5,7 @@ import com.example.chatapp.model.Logging;
 import com.example.chatapp.model.NameOfUser;
 import com.example.chatapp.service.MessagesRepository;
 import com.example.chatapp.service.UserRepository;
+import java.sql.Timestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,6 +76,7 @@ public class ChatAppMainController {
     chatAppMessages.setId();
     chatAppMessages.setUsername(nameOfUser.getUsername());
     chatAppMessages.setNewMessage(messages);
+    chatAppMessages.setTimeStamp(new Timestamp(System.currentTimeMillis()));
     messagesRepository.save(chatAppMessages);
     return "redirect:/";
   }

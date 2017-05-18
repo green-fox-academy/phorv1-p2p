@@ -1,5 +1,6 @@
 package com.example.chatapp.model;
 
+import java.sql.Timestamp;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import lombok.Getter;
@@ -13,13 +14,8 @@ public class ChatAppMessages {
   @Id
   long id;
 
-  public void setId() {
-    this.id = getRandomNumber();
-  }
-
-  public long getRandomNumber() {
-    return (1000000 + (long) (Math.random() * 9000000));
-  }
+  @Setter
+  Timestamp timeStamp;
 
   @Getter
   @Setter
@@ -27,4 +23,12 @@ public class ChatAppMessages {
   @Getter
   @Setter
   String newMessage;
+
+  public void setId() {
+    this.id = getRandomNumber();
+  }
+
+  public long getRandomNumber() {
+    return (1000000 + (long) (Math.random() * 9000000));
+  }
 }
