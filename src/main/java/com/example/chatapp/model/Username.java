@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-public class Username {
+public class NameOfUser {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,10 +17,10 @@ public class Username {
 
   private String username;
 
-  public Username() {
+  public NameOfUser() {
   }
 
-  public Username(String username) {
+  public NameOfUser(String username) {
     this.username = username;
   }
 
