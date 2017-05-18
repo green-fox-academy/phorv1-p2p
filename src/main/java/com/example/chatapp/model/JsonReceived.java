@@ -3,14 +3,13 @@ package com.example.chatapp.model;
 public class JsonReceived {
 
   ChatAppMessages message;
-
-  public ChatAppMessages getMessage() {
-    return message;
-  }
-
   Client client;
 
   public JsonReceived() {
+  }
+
+  public ChatAppMessages getMessage() {
+    return message;
   }
 
   public Client getClient() {
