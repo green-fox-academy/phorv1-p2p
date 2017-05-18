@@ -1,6 +1,7 @@
 package com.example.chatapp.model;
 
 import com.example.chatapp.service.UserRepository;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,12 +10,14 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
+@Component
 public class NameOfUser {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
+  @Column(unique = true)
   private String username;
 
   public NameOfUser() {

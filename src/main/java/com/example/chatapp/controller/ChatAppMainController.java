@@ -18,6 +18,8 @@ public class ChatAppMainController {
 
   @Autowired
   UserRepository repository;
+  @Autowired
+  NameOfUser nameOfUser;
 
   String chatAppUniqueId;
   String chatAppPeerAddress;
@@ -54,7 +56,8 @@ public class ChatAppMainController {
     if (userentry.equals("")) {
       return "register-error";
     }
-    repository.save(new NameOfUser(userentry));
+    nameOfUser.setUsername(userentry);
+    repository.save(nameOfUser);
     return "redirect:/";
   }
 }

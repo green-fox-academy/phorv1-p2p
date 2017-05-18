@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8"/>
   <title>Title</title>
@@ -9,8 +9,12 @@
 <table>
   <form action="/enter">
     <tr>
+      <td>Current user: </td>
+      <td></td>
+    </tr>
+    <tr>
       <td>Your username:</td>
-      <td><input type="text" name="Username:"/></td>
+      <td><input type="text" name="userentry:"/></td>
       <td><input type="submit" value="update"/></td>
     </tr>
   </form>
@@ -19,5 +23,10 @@
   <li>App</li>
   Hi there! Submit your message using the send button!
 </ul>
+<form action="/sendmessage" method="post">
+  <textarea name="message" rows="8" cols="40">
+  Enter yor message!</textarea>
+  <input type="submit" value="send"/>
+</form>
 </body>
 </html>
