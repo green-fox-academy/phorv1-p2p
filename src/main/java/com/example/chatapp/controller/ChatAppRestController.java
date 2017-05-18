@@ -24,5 +24,4 @@ public class ChatAppRestController {
     status.setStatus("ok");
     return status;
   }
-
 }
