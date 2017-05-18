@@ -18,7 +18,7 @@ public class ChatAppMessages {
   }
 
   public long getRandomNumber() {
-    return (1000000 + (long) (Math.random() * 90000000));
+    return (1000000 + (long) (Math.random() * 9000000));
   }
 
   @Getter
@@ -27,5 +27,4 @@ public class ChatAppMessages {
   @Getter
   @Setter
   String newMessage;
-
 }
