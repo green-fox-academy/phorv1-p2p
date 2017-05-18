@@ -23,7 +23,7 @@
   <li th:text="${messages.username}"></li>
   <span th:text="${messages.newMessage}"></span>
 </ul>
-<form action="@{/send}" method="post">
+<form th:action="@{/send}" method="post">
   <textarea name="message" rows="8" cols="40">
   Enter yor message!</textarea>
   <input type="submit" value="send"/>
