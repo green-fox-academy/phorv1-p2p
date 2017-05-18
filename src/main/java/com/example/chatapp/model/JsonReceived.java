@@ -2,8 +2,16 @@ package com.example.chatapp.model;
 
 public class JsonReceived {
 
+  ChatAppMessages message;
+
+  public ChatAppMessages getMessage() {
+    return message;
+  }
+
   Client client;
-  ChatAppMessages chatAppMessages;
+
+  public JsonReceived() {
+  }
 
   public Client getClient() {
     return client;
@@ -13,11 +21,7 @@ public class JsonReceived {
     this.client = client;
   }
 
-  public ChatAppMessages getChatAppMessages() {
-    return chatAppMessages;
-  }
-
-  public void setChatAppMessages(ChatAppMessages chatAppMessages) {
-    this.chatAppMessages = chatAppMessages;
+  public void setMessage(ChatAppMessages message) {
+    this.message = message;
   }
 }

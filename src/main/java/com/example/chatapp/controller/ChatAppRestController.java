@@ -20,7 +20,8 @@ public class ChatAppRestController {
   @CrossOrigin("*")
   @RequestMapping(value = "/api/message/receive")
   public Status receiveMessage(@RequestBody JsonReceived jsonReceived) {
-    messagesRepository.save(jsonReceived.getChatAppMessages());
+
+    messagesRepository.save(jsonReceived.getMessage());
     status.setStatus("ok");
     return status;
   }
