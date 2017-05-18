@@ -24,7 +24,7 @@
   <span th:text="${message.newMessage}"></span>
 </ul>
 <form th:action="@{/send}" method="post">
-  <textarea name="message" rows="8" cols="40">
+  <textarea name="messages" rows="8" cols="40">
   Enter yor message!</textarea>
   <input type="submit" value="send"/>
 </form>
