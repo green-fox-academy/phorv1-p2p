@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 @Controller
@@ -37,19 +39,22 @@ public class ChatAppMainController {
     String currentLogLevel = System.getenv("CHAT_APP_LOGLEVEL");
 
     if (currentLogLevel != null && currentLogLevel.equals("INFO")) {
-      System.out.println(new Logging("INFO","/", "GET", ""));
+      System.out.println(new Logging("INFO", "/", "GET", ""));
     }
     return "index";
   }
 
   @GetMapping(value = "/enter")
-  public String registerPage(){
+  public String registerPage() {
     return "register";
   }
 
   @PostMapping(value = "/enter")
-  public String addNewUser(String username) {
-    repository.save(new Username(username));
+  public String addNewUser(String userentry) {
+    if (userentry.equals("")) {
+      return "register-error";
+    }
+    repository.save(new Username(userentry));
     return "redirect:/";
   }
 }
