@@ -20,8 +20,8 @@
   <span>Hi there! Submit your message using the send button!</span>
 </ul>
 <ul th:each="message : ${messages}">
-  <li th:text="${messages.username}"></li>
-  <span th:text="${messages.newMessage}"></span>
+  <li th:text="${message.username}"></li>
+  <span th:text="${message.newMessage}"></span>
 </ul>
 <form th:action="@{/send}" method="post">
   <textarea name="message" rows="8" cols="40">

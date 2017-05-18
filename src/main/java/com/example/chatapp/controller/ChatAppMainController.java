@@ -49,6 +49,7 @@ public class ChatAppMainController {
       System.out.println(new Logging("INFO", "/", "GET", ""));
     }
     model.addAttribute("userentry", nameOfUser.getUsername());
+    model.addAttribute("messages", messagesRepository.findAll());
     return "index";
   }
 
