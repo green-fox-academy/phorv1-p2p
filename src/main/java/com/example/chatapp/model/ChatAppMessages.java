@@ -15,14 +15,14 @@ public class ChatAppMessages {
   long id;
 
   @Setter
-  Timestamp timeStamp;
+  Timestamp timestamp;
 
   @Getter
   @Setter
   String username;
   @Getter
   @Setter
-  String newMessage;
+  String text;
 
   public void setId() {
     this.id = getRandomNumber();
