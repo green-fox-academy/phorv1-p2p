@@ -1,7 +1,7 @@
 package com.example.chatapp.controller;
 
 import com.example.chatapp.model.Logging;
-import com.example.chatapp.model.Username;
+import com.example.chatapp.model.NameOfUser;
 import com.example.chatapp.service.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,7 +54,7 @@ public class ChatAppMainController {
     if (userentry.equals("")) {
       return "register-error";
     }
-    repository.save(new Username(userentry));
+    repository.save(new NameOfUser(userentry));
     return "redirect:/";
   }
 }
