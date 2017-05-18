@@ -1,5 +1,6 @@
 package com.example.chatapp.controller;
 
+import com.example.chatapp.model.ChatAppMessages;
 import com.example.chatapp.model.Logging;
 import com.example.chatapp.model.NameOfUser;
 import com.example.chatapp.service.UserRepository;
@@ -9,9 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 @Controller
@@ -21,6 +20,8 @@ public class ChatAppMainController {
   UserRepository repository;
   @Autowired
   NameOfUser nameOfUser;
+  @Autowired
+  ChatAppMessages chatAppMessages;
 
   String chatAppUniqueId;
   String chatAppPeerAddress;
@@ -49,7 +50,8 @@ public class ChatAppMainController {
   }
 
   @GetMapping(value = "/enter")
-  public String registerPage() {
+  public String registerPage(Model model) {
+    model.addAttribute("userentry", nameOfUser.getUsername());
     return "register";
   }
 
@@ -61,6 +63,12 @@ public class ChatAppMainController {
     nameOfUser.setUsername(userentry);
     nameOfUser.setId(1l);
     repository.save(nameOfUser);
+    return "redirect:/";
+  }
+
+  @PostMapping(value = "/send")
+  public String addMessage(String messages) {
+
     return "redirect:/";
   }
 }
