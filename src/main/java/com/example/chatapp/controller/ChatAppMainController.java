@@ -5,6 +5,7 @@ import com.example.chatapp.model.NameOfUser;
 import com.example.chatapp.service.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,13 +37,14 @@ public class ChatAppMainController {
   }
 
   @RequestMapping(value = "/")
-  public String mainPage() {
+  public String mainPage(Model model) {
 
     String currentLogLevel = System.getenv("CHAT_APP_LOGLEVEL");
 
     if (currentLogLevel != null && currentLogLevel.equals("INFO")) {
       System.out.println(new Logging("INFO", "/", "GET", ""));
     }
+    model.addAttribute("userentry", nameOfUser.getUsername());
     return "index";
   }
 
