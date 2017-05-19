@@ -33,8 +33,8 @@ public class ChatAppMainController {
   @Autowired
   Client client;
 
-
   RestTemplate restTemplate = new RestTemplate();
+
   String chatAppUniqueId;
   String chatAppPeerAddress;
 
@@ -89,9 +89,9 @@ public class ChatAppMainController {
     chatAppMessages.setTimestamp(new Timestamp(System.currentTimeMillis()));
     messagesRepository.save(chatAppMessages);
 
+    client.setId("phorv1");
     JsonReceived json = new JsonReceived();
     json.setMessage(chatAppMessages);
-    client.setId("phorv1");
     json.setClient(client);
     restTemplate.postForObject(url, json, JsonReceived.class);
     return "redirect:/";
