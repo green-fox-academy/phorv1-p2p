@@ -32,12 +32,11 @@ public class ChatAppRestController {
   String url = "https://chat-p2p.herokuapp.com/api/message/receive";
   RestTemplate restTemplate = new RestTemplate();
 
-  @GetMapping("/add")
+  @GetMapping("/sens")
   public JsonReceived index(
-          @RequestParam(name = "title") String title,
           @RequestParam(name = "href") String href) {
 
-    JsonReceived p = new JsonReceived(title, href);
+    JsonReceived p = new JsonReceived(href);
 
     JsonReceived newPost = restTemplate.postForObject(url, p, JsonReceived.class);
     return newPost;
