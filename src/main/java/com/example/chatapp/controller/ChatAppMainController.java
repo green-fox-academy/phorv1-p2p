@@ -33,6 +33,8 @@ public class ChatAppMainController {
   @Autowired
   Client client;
 
+
+  RestTemplate restTemplate = new RestTemplate();
   String chatAppUniqueId;
   String chatAppPeerAddress;
 
@@ -77,21 +79,19 @@ public class ChatAppMainController {
     return "redirect:/";
   }
 
-  String url = "https://chat-p2p.herokuapp.com/api/message/receive";
-  RestTemplate restTemplate = new RestTemplate();
-
   @PostMapping(value = "/send")
   public String addMessage(String messages) {
-    JsonReceived json = new JsonReceived();
-    JsonReceived newPost = restTemplate.postForObject(url, json, JsonReceived.class);
     chatAppMessages.setId();
     chatAppMessages.setUsername(nameOfUser.getUsername());
     chatAppMessages.setText(messages);
     chatAppMessages.setTimestamp(new Timestamp(System.currentTimeMillis()));
-    client.setId(chatAppUniqueId);
-    json.setMessage(chatAppMessages);
-    json.setClient(client);
     messagesRepository.save(chatAppMessages);
+    
+    JsonReceived json = new JsonReceived();
+    json.setMessage(chatAppMessages);
+    client.setId(chatAppUniqueId);
+    json.setClient(client);
+    restTemplate.postForObject(chatAppPeerAddress, json, JsonReceived.class);
     return "redirect:/";
   }
 }
