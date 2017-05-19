@@ -49,7 +49,7 @@ public class ChatAppMainController {
     return "redirect:/";
   }
 
-  @RequestMapping(value = "/")
+  @GetMapping(value = "/")
   public String mainPage(Model model) {
 
     String currentLogLevel = System.getenv("CHAT_APP_LOGLEVEL");
@@ -79,7 +79,7 @@ public class ChatAppMainController {
     return "redirect:/";
   }
 
-  String url = "http://p2p-chat-seed0forever.herokuapp.com/api/message/receive";
+  String url = "https://chat-p2p.herokuapp.com/api/message/receive";
 
   @PostMapping(value = "/send")
   public String addMessage(String messages) {
