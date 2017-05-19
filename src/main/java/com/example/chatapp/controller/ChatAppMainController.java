@@ -1,6 +1,7 @@
 package com.example.chatapp.controller;
 
 import com.example.chatapp.model.ChatAppMessages;
+import com.example.chatapp.model.Client;
 import com.example.chatapp.model.JsonReceived;
 import com.example.chatapp.model.Logging;
 import com.example.chatapp.model.NameOfUser;
@@ -29,6 +30,8 @@ public class ChatAppMainController {
   ChatAppMessages chatAppMessages;
   @Autowired
   MessagesRepository messagesRepository;
+  @Autowired
+  Client client;
 
   String chatAppUniqueId;
   String chatAppPeerAddress;
@@ -80,11 +83,14 @@ public class ChatAppMainController {
   @PostMapping(value = "/send")
   public String addMessage(String messages) {
     JsonReceived json = new JsonReceived();
-    restTemplate.postForObject(url, json, JsonReceived.class);
+    JsonReceived newPost = restTemplate.postForObject(url, json, JsonReceived.class);
     chatAppMessages.setId();
     chatAppMessages.setUsername(nameOfUser.getUsername());
     chatAppMessages.setText(messages);
     chatAppMessages.setTimestamp(new Timestamp(System.currentTimeMillis()));
+    client.setId(chatAppUniqueId);
+    json.setMessage(chatAppMessages);
+    json.setClient(client);
     messagesRepository.save(chatAppMessages);
     return "redirect:/";
   }
