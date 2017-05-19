@@ -79,7 +79,7 @@ public class ChatAppMainController {
     return "redirect:/";
   }
 
-  String url = "https://chat-p2p.herokuapp.com/api/message/receive";
+  String url = "http://p2p-chat-seed0forever.herokuapp.com/api/message/receive";
 
   @PostMapping(value = "/send")
   public String addMessage(String messages) {
