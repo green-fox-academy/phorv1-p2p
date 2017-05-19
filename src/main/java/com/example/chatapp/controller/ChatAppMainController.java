@@ -1,6 +1,7 @@
 package com.example.chatapp.controller;
 
 import com.example.chatapp.model.ChatAppMessages;
+import com.example.chatapp.model.JsonReceived;
 import com.example.chatapp.model.Logging;
 import com.example.chatapp.model.NameOfUser;
 import com.example.chatapp.service.MessagesRepository;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 @Controller
@@ -71,8 +74,13 @@ public class ChatAppMainController {
     return "redirect:/";
   }
 
+  String url = "https://chat-p2p.herokuapp.com/api/message/receive";
+  RestTemplate restTemplate = new RestTemplate();
+
   @PostMapping(value = "/send")
   public String addMessage(String messages) {
+    JsonReceived json = new JsonReceived();
+    restTemplate.postForObject(url, json, JsonReceived.class);
     chatAppMessages.setId();
     chatAppMessages.setUsername(nameOfUser.getUsername());
     chatAppMessages.setText(messages);

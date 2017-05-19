@@ -7,8 +7,6 @@ public class JsonReceived {
 
   public JsonReceived() {
   }
-  public JsonReceived(String href) {
-  }
 
   public ChatAppMessages getMessage() {
     return message;
