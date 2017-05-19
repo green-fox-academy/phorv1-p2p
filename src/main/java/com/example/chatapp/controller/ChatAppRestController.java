@@ -32,7 +32,7 @@ public class ChatAppRestController {
   String url = "https://chat-p2p.herokuapp.com/api/message/receive";
   RestTemplate restTemplate = new RestTemplate();
 
-  @GetMapping("/sens")
+  @GetMapping("/send")
   public JsonReceived index(
           @RequestParam(name = "href") String href) {
 
