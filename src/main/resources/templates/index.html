@@ -23,7 +23,7 @@
             <table>
               <form th:action="@{/enter}">
                 <tr>
-                  <td>Your username:</td>
+                  <td><strong>Your username </strong></td>
                   <td><input type="text" th:value="${userentry}" name="userentry"/></td>
                   <td><input class="btn btn-primary" type="submit" value="update"/></td>
                 </tr>
@@ -31,35 +31,39 @@
             </table>
           </div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">Chat</div>
-          <div class="panel-body">
-            <ul>
-              <li>App</li>
-              <span>Hi there! Submit your message using the send button!</span>
-            </ul>
-            <ul th:each="message : ${messages}">
-              <li th:text="${message.username}"></li>
-              <span th:text="${message.text}"></span>
-            </ul>
-            <table>
-              <form th:action="@{/send}" method="post">
-                <tr>
-                  <td>
-                    <textarea name="messages" rows="8" cols="40"></textarea></td>
-                </tr>
-                <tr>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Chat</div>
+        <div class="panel-body">
+          <ul>
+            <li>App</li>
+            <span>Hi there! Submit your message using the send button!</span>
+          </ul>
+          <ul th:each="message : ${messages}">
+            <li th:text="${message.username}"></li>
+            <span th:text="${message.text}"></span>
+          </ul>
+          <table>
+            <p><strong>Message</strong></p>
+            <form th:action="@{/send}" method="post">
+              <tr>
+                <td>
+                  <textarea class="form-control" name="messages" rows="1"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td>
                   <input class="btn btn-primary" type="submit" value="send"/>
-                  <a class="btn btn-default" th:href="@{/}">Refresh</a>
-                </tr>
-              </form>
-            </table>
-          </div>
+                    <a class="glyphicon glyphicon-refresh btn btn-default" type="submit" href="/"></a>
+                </td>
+              </tr>
+            </form>
+          </table>
         </div>
       </div>
     </div>
-    <div class="col-md-2"></div>
   </div>
+  <div class="col-md-2"></div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
