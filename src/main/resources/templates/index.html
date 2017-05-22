@@ -9,37 +9,29 @@
 </head>
 <body>
 <div class="container-fluid">
-  <div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
-    <h1 class="text-center">Peer to Peer Chat Program</h1>
-    <div class="text-center">
-      <table>
-        <form th:action="@{/enter}">
-          <tr>
-            <td>Your username:</td>
-            <td><input type="text" th:value="${userentry}" name="userentry"/></td>
-            <td><input class="btn btn-warning" type="submit" value="update"/></td>
-          </tr>
+      <h1 class="text-center">Peer to Peer Chat Program</h1>
+        <table>
+          <form th:action="@{/enter}">
+            <tr>
+              <td>Your username:</td>
+              <td><input type="text" th:value="${userentry}" name="userentry"/></td>
+              <td><input class="btn btn-warning" type="submit" value="update"/></td>
+            </tr>
+          </form>
+        </table>
+        <ul>
+          <li>App</li>
+          <span>Hi there! Submit your message using the send button!</span>
+        </ul>
+        <ul th:each="message : ${messages}">
+          <li th:text="${message.username}"></li>
+          <span th:text="${message.text}"></span>
+        </ul>
+        <form th:action="@{/send}" method="post">
+          <textarea name="messages" rows="8" cols="40"></textarea>
+          <input type="submit" value="send"/>
         </form>
-      </table>
-      <ul>
-        <li>App</li>
-        <span>Hi there! Submit your message using the send button!</span>
-      </ul>
-      <ul th:each="message : ${messages}">
-        <li th:text="${message.username}"></li>
-        <span th:text="${message.text}"></span>
-      </ul>
-      <form th:action="@{/send}" method="post">
-        <textarea name="messages" rows="8" cols="40"></textarea>
-        <input type="submit" value="send"/>
-      </form>
-      <a th:href="@{/}">Refresh</a>
-    </div>
-  </div>
-  <div class="col-md-2"></div>
-</div>
+        <a th:href="@{/}">Refresh</a>
 </div>
 <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
