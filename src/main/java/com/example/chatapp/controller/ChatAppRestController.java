@@ -20,7 +20,7 @@ public class ChatAppRestController {
 
   RestTemplate restTemplate = new RestTemplate();
 
-  String url = "https://peertopeerchatapp.herokuapp.com/api/message/receive";
+  String url = "https://dorinagychatapp.herokuapp.com/api/message/receive";
 
   @CrossOrigin("*")
   @RequestMapping(value = "/api/message/receive")
