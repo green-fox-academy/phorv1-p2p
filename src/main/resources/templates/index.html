@@ -5,7 +5,10 @@
   <title>ChatApp</title>
   <meta http-equiv="refresh" content="30"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"/>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous"/>
 </head>
 <body>
 <div class="container-fluid">
@@ -28,19 +31,18 @@
             </table>
           </div>
         </div>
-        <ul>
-          <li>App</li>
-          <span>Hi there! Submit your message using the send button!</span>
-        </ul>
-        <ul th:each="message : ${messages}">
-          <li th:text="${message.username}"></li>
-          <span th:text="${message.text}"></span>
-        </ul>
-        <table>
-          <div class="panel panel-default">
-            <div class="panel-heading">Chat</div>
-            <div class="panel-body">
-
+        <div class="panel panel-default">
+          <div class="panel-heading">Chat</div>
+          <div class="panel-body">
+            <ul>
+              <li>App</li>
+              <span>Hi there! Submit your message using the send button!</span>
+            </ul>
+            <ul th:each="message : ${messages}">
+              <li th:text="${message.username}"></li>
+              <span th:text="${message.text}"></span>
+            </ul>
+            <table>
               <form th:action="@{/send}" method="post">
                 <tr>
                   <td>
@@ -51,15 +53,17 @@
                   <a class="btn btn-default" th:href="@{/}">Refresh</a>
                 </tr>
               </form>
-            </div>
+            </table>
           </div>
-        </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
   </div>
 </div>
-<div class="col-md-2"></div>
-</div>
-</div>
-<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
-<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
