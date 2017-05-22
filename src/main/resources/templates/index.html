@@ -8,30 +8,36 @@
   <link th:href="@{webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"/>
 </head>
 <body>
-<h1>Peer to Peer Chat Program</h1>
-<table>
-  <form th:action="@{/enter}">
-    <tr>
-      <td>Your username:</td>
-      <td><input type="text" th:value="${userentry}" name="userentry"/></td>
-      <td><input type="submit" value="update"/></td>
-    </tr>
+<div class="container-fluid">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+  <h1 class="text-center">Peer to Peer Chat Program
+    <div class="text-center">
+  <table>
+    <form th:action="@{/enter}">
+      <tr>
+        <td>Your username:</td>
+        <td><input type="text" th:value="${userentry}" name="userentry"/></td>
+        <td><input type="submit" value="update"/></td>
+      </tr>
+    </form>
+  </table>
+  <ul>
+    <li>App</li>
+    <span>Hi there! Submit your message using the send button!</span>
+  </ul>
+  <ul th:each="message : ${messages}">
+    <li th:text="${message.username}"></li>
+    <span th:text="${message.text}"></span>
+  </ul>
+  <form th:action="@{/send}" method="post">
+    <textarea name="messages" rows="8" cols="40"></textarea>
+    <input type="submit" value="send"/>
   </form>
-</table>
-<ul>
-  <li>App</li>
-  <span>Hi there! Submit your message using the send button!</span>
-</ul>
-<ul th:each="message : ${messages}">
-  <li th:text="${message.username}"></li>
-  <span th:text="${message.text}"></span>
-</ul>
-<form th:action="@{/send}" method="post">
-  <textarea name="messages" rows="8" cols="40">
-  Enter yor message!</textarea>
-  <input type="submit" value="send"/>
-</form>
-<a th:href="@{/}">Refresh</a>
+  <a th:href="@{/}">Refresh</a>
+    </div>
+  <div class="col-md-2"></div>
+</div>
 <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 </body>
