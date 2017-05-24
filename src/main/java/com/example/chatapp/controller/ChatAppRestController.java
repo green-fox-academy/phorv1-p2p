@@ -53,10 +53,8 @@ public class ChatAppRestController {
       errors.add("client.id");
     }
 
-    if (errors.size() == 0) {
     messagesRepository.save(jsonReceived.getMessage());
     restTemplate.postForObject(url, jsonReceived, StatusOk.class);
-    }
 
     statusOk.setStatus("ok");
     statusError.setStatus("error");
