@@ -5,10 +5,13 @@ import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Status {
+public class StatusOk {
 
   @Setter
   @Getter
   String status;
 
+  public StatusOk() {
+    this.status = "ok";
+  }
 }

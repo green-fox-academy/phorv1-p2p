@@ -14,8 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
@@ -79,11 +77,11 @@ public class ChatAppMainController {
     return "redirect:/";
   }
 
-  String url = "https://chat-p2p.herokuapp.com/api/message/receive";
+  String url = "https://lit-caverns-63725.herokuapp.com/api/message/receive";
 
   @PostMapping(value = "/send")
   public String addMessage(String messages) {
-    chatAppMessages.setId();
+    chatAppMessages.myIdSet();
     chatAppMessages.setUsername(nameOfUser.getUsername());
     chatAppMessages.setText(messages);
     chatAppMessages.setTimestamp(new Timestamp(System.currentTimeMillis()));

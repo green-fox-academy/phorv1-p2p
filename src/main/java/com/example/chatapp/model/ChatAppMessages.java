@@ -13,6 +13,7 @@ public class ChatAppMessages {
 
   @Id
   @Getter
+  @Setter
   long id;
 
   @Getter
@@ -25,7 +26,7 @@ public class ChatAppMessages {
   @Setter
   Timestamp timestamp;
 
-  public void setId() {
+  public void myIdSet() {
     this.id = getRandomNumber();
   }
 
