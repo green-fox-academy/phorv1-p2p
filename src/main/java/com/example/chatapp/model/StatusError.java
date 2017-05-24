@@ -17,7 +17,7 @@ public class StatusError {
   String message;
 
   public void setMessage(List<String> message) {
-    this.message = "Missing field(s) ";
+    this.message = "Missing field(s): ";
     for (String entry : message) {
     this.message += entry + ", ";
     }

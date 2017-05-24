@@ -35,34 +35,28 @@ public class ChatAppRestController {
   @CrossOrigin("*")
   @RequestMapping(value = "/api/message/receive")
   public Object receiveMessage(@RequestBody JsonReceived jsonReceived) {
-    ChatAppMessages received = new ChatAppMessages();
     List<String> errors = new ArrayList<>();
 
     if (StringUtils.isEmpty(jsonReceived.getMessage().getText())) {
       errors.add("message.text");
-    } else {
-      received.setText(jsonReceived.getMessage().getText());
     }
     if (StringUtils.isEmpty(jsonReceived.getMessage().getUsername())) {
       errors.add("message.username");
-    } else {
-      received.setUsername(jsonReceived.getMessage().getUsername());
     }
     if (StringUtils.isEmpty(jsonReceived.getMessage().getTimestamp())) {
       errors.add("message.timestamp");
-    } else {
-      received.setTimestamp(jsonReceived.getMessage().getTimestamp());
     }
     if (StringUtils.isEmpty(jsonReceived.getMessage().getId())) {
       errors.add("message.id");
-    } else {
-      received.setId(jsonReceived.getMessage().getId());
     }
     if (StringUtils.isEmpty(jsonReceived.getClient().getId())) {
       errors.add("client.id");
     }
-    messagesRepository.save(received);
+
+    if (errors.size() == 0) {
+    messagesRepository.save(jsonReceived.getMessage());
     restTemplate.postForObject(url, jsonReceived, StatusOk.class);
+    }
 
     statusOk.setStatus("ok");
     statusError.setStatus("error");
