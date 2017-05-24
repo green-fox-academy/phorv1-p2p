@@ -52,17 +52,19 @@ public class ChatAppRestController {
     if (StringUtils.isEmpty(jsonReceived.getClient().getId())) {
       errors.add("client.id");
     }
-
-    if (errors.size() == 0) {
-    messagesRepository.save(jsonReceived.getMessage());
-    restTemplate.postForObject(url, jsonReceived, StatusOk.class);
+    if (!jsonReceived.getClient().getId().equals("phorv1")) {
+      if (errors.size() == 0) {
+        statusOk.setStatus("ok");
+        messagesRepository.save(jsonReceived.getMessage());
+        restTemplate.postForObject(url, jsonReceived, StatusOk.class);
+      } else {
+        statusError.setStatus("error");
+        statusError.setMessage(errors);
+      }
+    } else {
+      statusOk.setStatus("ok");
     }
-
-    statusOk.setStatus("ok");
-    statusError.setStatus("error");
-    statusError.setMessage(errors);
-
-    return (errors.size()== 0) ? statusOk : statusError;
-    }
+    return (errors.size() == 0) ? statusOk : statusError;
+  }
 }
 
