@@ -30,12 +30,11 @@ public class ChatAppRestController {
 
   RestTemplate restTemplate = new RestTemplate();
 
-  String url = "https://reka-greenfox-p2pchatapp.herokuapp.com/api/message/receive";
+  String url = "https://chat-p2p.herokuapp.com/api/message/receive";
 
   @CrossOrigin("*")
   @RequestMapping(value = "/api/message/receive")
   public Object receiveMessage(@RequestBody JsonReceived jsonReceived) {
-    ChatAppMessages received = new ChatAppMessages();
     List<String> errors = new ArrayList<>();
 
     if (StringUtils.isEmpty(jsonReceived.getMessage().getText())) {
