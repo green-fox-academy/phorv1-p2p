@@ -35,6 +35,7 @@ public class ChatAppRestController {
   @CrossOrigin("*")
   @RequestMapping(value = "/api/message/receive")
   public Object receiveMessage(@RequestBody JsonReceived jsonReceived) {
+    ChatAppMessages received = new ChatAppMessages();
     List<String> errors = new ArrayList<>();
 
     if (StringUtils.isEmpty(jsonReceived.getMessage().getText())) {
@@ -53,8 +54,10 @@ public class ChatAppRestController {
       errors.add("client.id");
     }
 
+    if (errors.size() == 0) {
     messagesRepository.save(jsonReceived.getMessage());
     restTemplate.postForObject(url, jsonReceived, StatusOk.class);
+    }
 
     statusOk.setStatus("ok");
     statusError.setStatus("error");
