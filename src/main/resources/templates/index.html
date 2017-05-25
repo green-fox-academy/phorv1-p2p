@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="container-fluid">
-  <div class="panel panel-danger">
+  <div class="panel panel-default">
     <div class="panel-heading"><h2 style="text-align: center">Peer to Peer Chat Program</h2></div>
     <div class="panel-body">
       <div class="row">
@@ -44,10 +44,8 @@
                 <table>
                   <p style="text-align: center"><strong>Send Your Message</strong></p>
                   <form th:action="@{/send}" method="post">
-                    <tr style="text-align: center">
-                      <textarea class="form-control" name="messages"
-                                placeholder="Enter your message here"></textarea>
-                    </tr>
+                      <textarea class="form-control" th:value="${messages}" name="messages" placeholder="Enter your message here">
+                      </textarea>
                     <p></p>
                     <tr>
                       <input class="btn btn-info btn-sm" type="submit" value="send"/>
