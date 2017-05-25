@@ -58,7 +58,7 @@
           </div>
           <div class="panel panel-info">
             <div class="panel-heading">Chat Messages</div>
-            <div class="panel-body">
+            <div id="scroll" style="overflow-y: scroll; max-height: 300px" class="panel-body">
               <ul th:each="message : ${messages}">
                 <li><span th:onclick="'showTimestamp(\'' + ${message.timestamp} + '\');'"
                           class="btn btn-warning btn-xs" th:text="${message.username}"></span></li>
