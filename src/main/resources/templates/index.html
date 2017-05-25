@@ -35,14 +35,6 @@
       <div class="panel panel-default">
         <div class="panel-heading">Chat</div>
         <div class="panel-body">
-          <ul>
-            <li>App</li>
-            <span>Hi there! Submit your message using the send button!</span>
-          </ul>
-          <ul th:each="message : ${messages}">
-            <li th:text="${message.username}"></li>
-            <span th:text="${message.text}"></span>
-          </ul>
           <table>
             <p><strong>Message</strong></p>
             <form th:action="@{/send}" method="post">
@@ -54,11 +46,19 @@
               <tr>
                 <td>
                   <input class="btn btn-primary" type="submit" value="send"/>
-                    <a class="glyphicon glyphicon-refresh btn btn-default" type="submit" href="/"></a>
+                  <a class="glyphicon glyphicon-refresh btn btn-default" type="submit" href="/"></a>
                 </td>
               </tr>
             </form>
           </table>
+          <ul>
+            <li>App</li>
+            <span>Hi there! Submit your message using the send button!</span>
+          </ul>
+          <ul th:each="message : ${messages}">
+            <li th:text="${message.username}"></li>
+            <span th:text="${message.text}"></span>
+          </ul>
         </div>
       </div>
     </div>
