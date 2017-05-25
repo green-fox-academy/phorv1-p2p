@@ -36,7 +36,7 @@
         <div class="panel-heading">Chat</div>
         <div class="panel-body">
           <table>
-            <p><strong>Message</strong></p>
+            <p><strong>Send Your Message</strong></p>
             <form th:action="@{/send}" method="post">
               <tr>
                 <td>
@@ -51,9 +51,15 @@
               </tr>
             </form>
           </table>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Chat Messages</div>
+        <div class="panel-body">
           <ul th:each="message : ${messages}">
-            <li><span class="btn btn-info btn-sm" th:text="${message.username}"></span></li>
+            <li><span class="btn btn-warning btn-xs" th:text="${message.username}"></span></li>
             <span th:text="${message.text}"></span>
+            <span th:text="${message.timestamp}"></span>
           </ul>
         </div>
       </div>
