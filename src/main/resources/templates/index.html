@@ -57,9 +57,9 @@
         <div class="panel-heading">Chat Messages</div>
         <div class="panel-body">
           <ul th:each="message : ${messages}">
-            <li><button class="btn btn-warning btn-xs" th:text="${message.username}"></button></li>
+            <li><span th:onclick="'showTimestamp(\'' + ${message.timestamp} + '\');'" class="btn btn-warning btn-xs" th:text="${message.username}"></span></li>
             <span th:text="${message.text}"></span>
-            <div style="color: #9d9d9d;" th:text="${message.timestamp}"></div>
+            <div th:id="'timestamp-' + ${message.timestamp}" style="color: #9d9d9d; display: none" th:text="${message.timestamp}"></div>
           </ul>
         </div>
       </div>
@@ -71,5 +71,6 @@
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/script.js"></script>
 </body>
 </html>
