@@ -14,7 +14,7 @@
 <div class="container-fluid">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h2 style="text-align: center" th:text="'Logged in as: ' + ${userentry}" name="userentry">Peer to Peer Chat Program</h2></div>
+      <h2 style="text-align: center" th:text="${#strings.isEmpty(userentry)}? 'Peer to Peer Chat Program' : 'Logged in as: ' + ${userentry}" name="userentry"></h2></div>
     <div class="panel-body">
       <div class="row">
         <div class="col-md-3">
