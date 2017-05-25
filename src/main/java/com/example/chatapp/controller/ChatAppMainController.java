@@ -8,12 +8,15 @@ import com.example.chatapp.model.NameOfUser;
 import com.example.chatapp.service.MessagesRepository;
 import com.example.chatapp.service.UserRepository;
 import java.sql.Timestamp;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
@@ -41,9 +44,9 @@ public class ChatAppMainController {
     this.chatAppPeerAddress = System.getenv("CHAT_APP_PEER_ADDRESSS");
   }
 
-  @ExceptionHandler(value = NoHandlerFoundException.class)
-  public String notFound() {
-    System.err.println("ERROR");
+  @ExceptionHandler(value = HttpServerErrorException.class)
+  public String notFound(HttpServerErrorException e) {
+    e.printStackTrace();
     return "redirect:/";
   }
 
@@ -63,7 +66,7 @@ public class ChatAppMainController {
   @GetMapping(value = "/enter")
   public String registerPage(Model model) {
     model.addAttribute("userentry", nameOfUser.getUsername());
-    return "register";
+    return "redirect:/";
   }
 
   @PostMapping(value = "/enter")
@@ -95,4 +98,17 @@ public class ChatAppMainController {
     restTemplate.postForObject(url, json, JsonReceived.class);
     return "redirect:/";
   }
+
+  @GetMapping(value = "/{id}/delete")
+  public String delete(@PathVariable ("id") long id) {
+    messagesRepository.delete(id);
+    return "redirect:/";
+  }
+
+  @GetMapping(value = "/clearall")
+  public String delete() {
+    messagesRepository.deleteAll();
+    return "redirect:/";
+  }
+
 }

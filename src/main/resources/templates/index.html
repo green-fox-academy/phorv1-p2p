@@ -23,13 +23,14 @@
               <div class="text-center">
                 <table>
                   <p><strong>Your username</strong></p>
-                  <form th:action="@{/enter}">
+                  <form th:action="@{/enter}" method="post">
                     <tr><input style="text-align: center; color: #9d9d9d" class="form-control"
                                type="text"
-                               th:value="${userentry}" name="userentry"/></tr>
+                               th:placeholder="${userentry}" name="userentry"/></tr>
                     <p></p>
                     <tr><input class="btn btn-success btn-sm" type="submit" value="update"/></tr>
                   </form>
+
                 </table>
               </div>
             </div>
@@ -59,11 +60,13 @@
           <div class="panel panel-info">
             <div class="panel-heading">Chat Messages
               <a class="glyphicon glyphicon-refresh btn-sm"
-                 type="submit" href="/"></a></div>
+                 type="submit" href="/"></a>
+              <a href="clearall" class="btn btn-danger btn-sm">Clear All</a></div>
             <div id="scroll" style="overflow-y: scroll; max-height: 500px" class="panel-body">
               <ul th:each="message : ${messages}">
                 <li><span th:onclick="'showTimestamp(\'' + ${message.timestamp} + '\');'"
                           class="btn btn-warning btn-xs" th:text="${message.username}"></span></li>
+                <span class="text-left"><a th:href="${message.id + '/delete'}" class="glyphicon glyphicon-trash" style="color: black"></a></span>
                 <span th:text="${message.text}"></span>
                 <div th:id="'timestamp-' + ${message.timestamp}"
                      style="color: #9d9d9d; display: none" th:text="${message.timestamp}"></div>
