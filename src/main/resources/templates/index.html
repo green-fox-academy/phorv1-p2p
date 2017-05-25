@@ -23,7 +23,7 @@
             <table>
               <form th:action="@{/enter}">
                 <tr>
-                  <td><strong>Your username </strong></td>
+                  <td><strong>Your username</strong></td>
                   <td><input type="text" th:value="${userentry}" name="userentry"/></td>
                   <td><input class="btn btn-primary" type="submit" value="update"/></td>
                 </tr>
@@ -57,9 +57,9 @@
         <div class="panel-heading">Chat Messages</div>
         <div class="panel-body">
           <ul th:each="message : ${messages}">
-            <li><span class="btn btn-warning btn-xs" th:text="${message.username}"></span></li>
+            <li><button class="btn btn-warning btn-xs" th:text="${message.username}"></button></li>
             <span th:text="${message.text}"></span>
-            <span th:text="${message.timestamp}"></span>
+            <div style="color: #9d9d9d;" th:text="${message.timestamp}"></div>
           </ul>
         </div>
       </div>
