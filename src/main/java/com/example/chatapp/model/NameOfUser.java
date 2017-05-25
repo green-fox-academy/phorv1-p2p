@@ -40,5 +40,5 @@ public class NameOfUser {
   public String getUsername() {
     return username;
   }
-  
+
 }
