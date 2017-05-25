@@ -40,17 +40,19 @@
                  href="/"></a>
             </div>
             <div class="panel-body">
+              <div class="text-center">
                 <table>
                   <p><strong>Send Your Message</strong></p>
-                  <form th:action="@{/send}" method="post">
-                      <textarea class="form-control" th:value="${messages}" name="messages" placeholder="Enter your message here">
-                      </textarea>
+                  <form style="text-align: center" th:action="@{/send}" method="post">
+                    <tr><textarea class="form-control" name="messages"
+                                  placeholder="Enter your message here"></textarea></tr>
                     <p></p>
                     <tr>
                       <input class="btn btn-info btn-sm" type="submit" value="send"/>
                     </tr>
                   </form>
                 </table>
+              </div>
             </div>
           </div>
         </div>
