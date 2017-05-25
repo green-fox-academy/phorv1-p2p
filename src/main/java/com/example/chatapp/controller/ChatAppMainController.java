@@ -77,7 +77,7 @@ public class ChatAppMainController {
     return "redirect:/";
   }
 
-  String url = "https://salty-gorge-16872.herokuapp.com/api/message/receive";
+  String url = "https://infinite-escarpment-68973.herokuapp.com/api/message/receive";
  // String url = "https://lit-caverns-63725.herokuapp.com/api/message/receive";
 
   @PostMapping(value = "/send")
