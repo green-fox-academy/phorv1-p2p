@@ -36,8 +36,6 @@
           </div>
           <div class="panel panel-warning">
             <div class="panel-heading" style="text-align: center">Chat
-              <a class="glyphicon glyphicon-refresh btn-sm" type="submit"
-                 href="/"></a>
             </div>
             <div class="panel-body">
               <div class="text-center">
@@ -59,7 +57,9 @@
         <div class="col-md-9">
 
           <div class="panel panel-info">
-            <div class="panel-heading">Chat Messages</div>
+            <div class="panel-heading">Chat Messages
+              <a class="glyphicon glyphicon-refresh btn-sm"
+                 type="submit" href="/"></a></div>
             <div id="scroll" style="overflow-y: scroll; max-height: 500px" class="panel-body">
               <ul th:each="message : ${messages}">
                 <li><span th:onclick="'showTimestamp(\'' + ${message.timestamp} + '\');'"
