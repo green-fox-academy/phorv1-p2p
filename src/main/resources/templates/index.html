@@ -14,7 +14,9 @@
 <div class="container-fluid">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h2 style="text-align: center" th:text="${#strings.isEmpty(userentry)}? 'Peer to Peer Chat Program' : 'Logged in as: ' + ${userentry}" name="userentry"></h2></div>
+      <h2 style="text-align: center"
+          th:text="${#strings.isEmpty(userentry)}? 'Peer to Peer Chat Program' : 'Logged in as: ' + ${userentry}"
+          name="userentry"></h2></div>
     <div class="panel-body">
       <div class="row">
         <div class="col-md-3">
@@ -62,12 +64,15 @@
             <div class="panel-heading">Chat Messages
               <a class="glyphicon glyphicon-refresh btn-sm"
                  type="submit" href="/"></a>
-              <a href="clearall" class="btn btn-danger btn-sm">Clear All Messages</a></div>
+              <a href="clearall" onclick="return confirm('Are you sure?')"
+                 class=" btn btn-danger btn-sm">Clear All Messages</a></div>
             <div id="scroll" style="overflow-y: scroll; max-height: 500px" class="panel-body">
               <ul th:each="message : ${messages}">
                 <li><span th:onclick="'showTimestamp(\'' + ${message.timestamp} + '\');'"
                           class="btn btn-warning btn-xs" th:text="${message.username}"></span></li>
-                <span class="text-left"><a th:href="${message.id + '/delete'}" class="glyphicon glyphicon-trash" style="color: black"></a></span>
+                <span class="text-left"><a th:href="${message.id + '/delete'}"
+                                           class="glyphicon glyphicon-trash"
+                                           style="color: black"></a></span>
                 <span th:text="${message.text}"></span>
                 <div th:id="'timestamp-' + ${message.timestamp}"
                      style="color: #9d9d9d; display: none" th:text="${message.timestamp}"></div>
