@@ -51,12 +51,8 @@
               </tr>
             </form>
           </table>
-          <ul>
-            <li>App</li>
-            <span>Hi there! Submit your message using the send button!</span>
-          </ul>
           <ul th:each="message : ${messages}">
-            <li th:text="${message.username}"></li>
+            <li><span class="btn btn-info btn-sm" th:text="${message.username}"></span></li>
             <span th:text="${message.text}"></span>
           </ul>
         </div>
