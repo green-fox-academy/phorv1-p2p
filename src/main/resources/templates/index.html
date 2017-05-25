@@ -24,7 +24,8 @@
                 <table>
                   <p><strong>Your username</strong></p>
                   <form th:action="@{/enter}">
-                    <tr><input style="text-align: center; color: #9d9d9d" class="form-control" type="text"
+                    <tr><input style="text-align: center; color: #9d9d9d" class="form-control"
+                               type="text"
                                th:value="${userentry}" name="userentry"/></tr>
                     <p></p>
                     <tr><input class="btn btn-success btn-sm" type="submit" value="update"/></tr>
@@ -33,32 +34,35 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-9">
           <div class="panel panel-warning">
-            <div class="panel-heading">Chat
+            <div class="panel-heading" style="text-align: center">Chat
               <a class="glyphicon glyphicon-refresh btn-sm" type="submit"
                  href="/"></a>
             </div>
             <div class="panel-body">
-              <table>
-                <p><strong>Send Your Message</strong></p>
-                <form th:action="@{/send}" method="post">
-                  <tr>
-                    <td>
-                      <input type="text" class="form-control" placeholder="Enter your message"/>
-                    </td>
-                    <td>
+              <div class="text-center">
+                <table>
+                  <p style="text-align: center"><strong>Send Your Message</strong></p>
+                  <form th:action="@{/send}" method="post">
+                    <tr style="text-align: center">
+                      <textarea class="form-control" name="messages"
+                                placeholder="Enter your message here"></textarea>
+                    </tr>
+                    <p></p>
+                    <tr>
                       <input class="btn btn-info btn-sm" type="submit" value="send"/>
-                    </td>
-                  </tr>
-                </form>
-              </table>
+                    </tr>
+                  </form>
+                </table>
+              </div>
             </div>
           </div>
+        </div>
+        <div class="col-md-9">
+
           <div class="panel panel-info">
             <div class="panel-heading">Chat Messages</div>
-            <div id="scroll" style="overflow-y: scroll; max-height: 300px" class="panel-body">
+            <div id="scroll" style="overflow-y: scroll; max-height: 500px" class="panel-body">
               <ul th:each="message : ${messages}">
                 <li><span th:onclick="'showTimestamp(\'' + ${message.timestamp} + '\');'"
                           class="btn btn-warning btn-xs" th:text="${message.username}"></span></li>
