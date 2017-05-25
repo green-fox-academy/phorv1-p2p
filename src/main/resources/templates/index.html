@@ -13,7 +13,8 @@
 <body>
 <div class="container-fluid">
   <div class="panel panel-default">
-    <div class="panel-heading"><h2 style="text-align: center">Peer to Peer Chat Program</h2></div>
+    <div class="panel-heading">
+      <h2 style="text-align: center" th:text="'Logged in as: ' + ${userentry}" name="userentry">Peer to Peer Chat Program</h2></div>
     <div class="panel-body">
       <div class="row">
         <div class="col-md-3">
@@ -28,7 +29,7 @@
                                type="text"
                                th:placeholder="${userentry}" name="userentry"/></tr>
                     <p></p>
-                    <tr><input class="btn btn-success btn-sm" type="submit" value="update"/></tr>
+                    <tr><input class="btn btn-success btn-sm" type="submit" value="Update"/></tr>
                   </form>
 
                 </table>
@@ -47,7 +48,7 @@
                                   placeholder="Enter your message here"></textarea></tr>
                     <p></p>
                     <tr>
-                      <input class="btn btn-info btn-sm" type="submit" value="send"/>
+                      <input class="btn btn-info btn-sm" type="submit" value="Send"/>
                     </tr>
                   </form>
                 </table>
@@ -61,7 +62,7 @@
             <div class="panel-heading">Chat Messages
               <a class="glyphicon glyphicon-refresh btn-sm"
                  type="submit" href="/"></a>
-              <a href="clearall" class="btn btn-danger btn-sm">Clear All</a></div>
+              <a href="clearall" class="btn btn-danger btn-sm">Clear All Messages</a></div>
             <div id="scroll" style="overflow-y: scroll; max-height: 500px" class="panel-body">
               <ul th:each="message : ${messages}">
                 <li><span th:onclick="'showTimestamp(\'' + ${message.timestamp} + '\');'"
