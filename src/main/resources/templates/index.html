@@ -12,44 +12,44 @@
 </head>
 <body>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-      <div class="panel panel-danger">
-        <div class="panel-heading"><h3>Peer to Peer Chat Program</h3></div>
-        <div class="panel-body">
+  <div class="panel panel-danger">
+    <div class="panel-heading"><h2 style="text-align: center">Peer to Peer Chat Program</h2></div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-3">
           <div class="panel panel-success">
-            <div class="panel-heading">User</div>
+            <div class="panel-heading" style="text-align: center">User</div>
             <div class="panel-body">
               <div class="text-center">
                 <table>
+                  <p><strong>Your username</strong></p>
                   <form th:action="@{/enter}">
-                    <tr>
-                      <td><strong>Your username</strong></td>
-                      <td><input type="text" th:value="${userentry}" name="userentry"/></td>
-                      <td><input class="btn btn-primary" type="submit" value="update"/></td>
-                    </tr>
+                    <tr><input style="text-align: center; color: #9d9d9d" class="form-control" type="text"
+                               th:value="${userentry}" name="userentry"/></tr>
+                    <p></p>
+                    <tr><input class="btn btn-success btn-sm" type="submit" value="update"/></tr>
                   </form>
                 </table>
               </div>
             </div>
           </div>
+        </div>
+        <div class="col-md-9">
           <div class="panel panel-warning">
-            <div class="panel-heading">Chat</div>
+            <div class="panel-heading">Chat
+              <a class="glyphicon glyphicon-refresh btn-sm" type="submit"
+                 href="/"></a>
+            </div>
             <div class="panel-body">
               <table>
                 <p><strong>Send Your Message</strong></p>
                 <form th:action="@{/send}" method="post">
                   <tr>
                     <td>
-                      <textarea class="form-control" name="messages" rows="1"></textarea>
+                      <input type="text" class="form-control" placeholder="Enter your message"/>
                     </td>
-                  </tr>
-                  <tr>
                     <td>
-                      <input class="btn btn-primary" type="submit" value="send"/>
-                      <a class="glyphicon glyphicon-refresh btn btn-default" type="submit"
-                         href="/"></a>
+                      <input class="btn btn-info btn-sm" type="submit" value="send"/>
                     </td>
                   </tr>
                 </form>
@@ -72,7 +72,6 @@
       </div>
     </div>
   </div>
-  <div class="col-md-2"></div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
